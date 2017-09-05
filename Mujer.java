@@ -31,18 +31,15 @@ public class Mujer
     }
     
     // Inicio de los Setters:
-    private void setNombre(String p_nombre)
-    {
+    private void setNombre(String p_nombre){
         this.nombre = p_nombre;
     }
     
-    private void setApellido(String p_apellido)
-    {
+    private void setApellido(String p_apellido){
         this.apellido = p_apellido;
     }
     
-    private void setEdad(int p_edad)
-    {
+    private void setEdad(int p_edad){
         this.edad = p_edad;
     }
     
@@ -50,8 +47,7 @@ public class Mujer
      * Que hago acá si no recibe parámetros?
      *
      */
-    private void setEstadoCivil(String p_estado)
-    {
+    private void setEstadoCivil(String p_estado){
         this.estadoCivil = p_estado;
     }
     
@@ -82,21 +78,17 @@ public class Mujer
         return this.estadoCivil;
     }
     
-    public Hombre getEsposo()
-    {
+    public Hombre getEsposo(){
         return this.esposo;
     }
     // Fin de los Getters.
     
     // Inicio de los demás métodos:
-    public void casarseCon(Hombre p_esposo)
-    {
-        if (this.getEsposo() == null)
-        {
+    public void casarseCon(Hombre p_esposo){
+        if (this.getEsposo() == null){
             this.setEstadoCivil("Casada"); 
             this.setEsposo(p_esposo);
-            this.getEsposo().casarseCon(this);
-                         
+            this.getEsposo().casarseCon(this);            
        }
     }
     
@@ -108,16 +100,11 @@ public class Mujer
             this.getEsposo().divorcio();                    
             this.setEsposo(null);
         }*/
-        System.out.println("ESPOSO: " +this.getEsposo());
-        if (this.getEsposo().getEsposa() != null)
-            
-        
-        {  
+        if (this.getEsposo()!= null){  
             this.setEstadoCivil("Divorciada");
-            
             this.getEsposo().divorcio(); 
             this.setEsposo( null );
-            
+            System.out.println("Te has divorciado tia");
         } 
         
     }
