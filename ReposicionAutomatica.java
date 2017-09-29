@@ -61,19 +61,19 @@ public class ReposicionAutomatica
                     for (int j = 0; j < 30; j++)
                       {
                           nombre = nombre + archi.readChar();
-                    }//Fin del for del j (NOMBRE)
+                       }//Fin del for del j (NOMBRE)
                             
                     //Lee los String de DOMICILIO de a un caracter y concatena:
-                    for (int k = 0; k < 30; k++)
-                            {
-                                domicilio = domicilio + archi.readChar();
-                            }//Fin del for del k (DOMICILIO)
+                    for ( j = 0; j < 30; j++)
+                      {
+                        domicilio = domicilio + archi.readChar();
+                      }//Fin del for del k (DOMICILIO)
                             
                    //Lee los String de TELEFONO de a un caracter y concatena:
-                    for (int l = 0; l < 30; l++)
-                            {
-                                telefono = telefono + archi.readChar();
-                            }//Fin del for del l (TELEFONO)
+                    for ( j = 0; j < 30; j++)
+                     {
+                        telefono = telefono + archi.readChar();
+                      }//Fin del for del l (TELEFONO)
                             
                      compraMin = archi.readInt();
                      diaEntrega = archi.readInt();
