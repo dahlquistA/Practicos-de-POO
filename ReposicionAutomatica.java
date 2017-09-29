@@ -102,7 +102,7 @@ public class ReposicionAutomatica
                      archiDIS.writeInt(prod.getExistMinima());
                      archiDIS.writeInt(codigoLab);
                             
-                             razon = prod.solicitar();
+                     razon = prod.solicitar();
                          if (razon != 'N')
                          {
                             if (razon == 'F')
@@ -114,31 +114,27 @@ public class ReposicionAutomatica
                                     p = p + 1;
                                     }
                                     
-                            System.out.println("Producto: "+prod.getDescripcion());
-                            
-                            lab.mostrar();
-                            
-                            System.out.println("Cantidad a comprar "+lab.getCompraMinima()+"  paquetes        Dia de entrega: "+lab.getDiaEntrega());
-                            System.out.println("--------------------------------------------------------------------" );
-                            cantidadCompra = cantidadCompra + 1;
-                            importeTotal = importeTotal + (lab.getCompraMinima()* prod.getCosto());
+                     System.out.println("Producto: "+prod.getDescripcion());                       
+                         
+                    System.out.println("Cantidad a comprar "+lab.getCompraMinima()+"  paquetes        Dia de entrega: "+lab.getDiaEntrega());
+                    System.out.println("--------------------------------------------------------------------" );
+                    cantidadCompra = cantidadCompra + 1;
+                    importeTotal = importeTotal + (lab.getCompraMinima()* prod.getCosto());
                                 
-                             compraDOS.writeInt(prod.getCodigo());
-                             compraDOS.writeInt(codigoLab);
-                             compraDOS.writeInt(lab.getCompraMinima());
-                             compraDOS.writeDouble(lab.getCompraMinima() * prod.getCosto());
-                             compraDOS.writeChar(razon);
+                    compraDOS.writeInt(prod.getCodigo());
+                    compraDOS.writeInt(codigoLab);
+                    ompraDOS.writeInt(lab.getCompraMinima());
+                    compraDOS.writeDouble(lab.getCompraMinima() * prod.getCosto());
+                    compraDOS.writeChar(razon);
                         
-                            }
-                
+                     }                
                }//Fin del for del i (REGISTROS DEL ARCHIVO)
                 
           archi.close();
           archiDIS.close();
           compraDOS.close();                       
                                              
-         }//Fin del try del grabado de productos.dat
-                
+         }//Fin del try del grabado de productos.dat              
             
        catch (FileNotFoundException fnfe)
         {
