@@ -19,17 +19,27 @@ public class Mujer
         this.setEsposo(p_esposo);
     }    
     // Inicio de los Setters:
-    private void setNombre(String p_nombre)
-    {  this.nombre = p_nombre;    }
+
+    private void setNombre(String p_nombre){
+        this.nombre = p_nombre;
+    }
     
-    private void setApellido(String p_apellido)
-    { this.apellido = p_apellido; }
+    private void setApellido(String p_apellido){
+        this.apellido = p_apellido;
+    }
     
-    private void setEdad(int p_edad)
-    {  this.edad = p_edad;  }
- 
-    private void setEstadoCivil(String p_estado)
-    {  this.estadoCivil = p_estado;  }
+    private void setEdad(int p_edad){
+        this.edad = p_edad;
+    }
+    
+    /**
+     * Que hago acá si no recibe parámetros?
+     *
+     */
+    private void setEstadoCivil(String p_estado){
+        this.estadoCivil = p_estado;
+    }
+
     
     private void setEsposo(Hombre p_esposo)
     {  this.esposo = p_esposo; }
@@ -48,19 +58,19 @@ public class Mujer
     public String getEstadoCivil()
     {  return this.estadoCivil;  }
     
-    public Hombre getEsposo()
-    {  return this.esposo;  }
+
+    public Hombre getEsposo(){
+        return this.esposo;
+    }
     // Fin de los Getters.
     
     // Inicio de los demás métodos:
-    public void casarseCon(Hombre p_esposo)
-    {
-        if (this.getEsposo() == null)
-         {
+    public void casarseCon(Hombre p_esposo){
+        if (this.getEsposo() == null){
             this.setEstadoCivil("Casada"); 
             this.setEsposo(p_esposo);
-            this.getEsposo().casarseCon(this);
-              
+            this.getEsposo().casarseCon(this);            
+
        }
     }
     
@@ -72,14 +82,13 @@ public class Mujer
             this.getEsposo().divorcio();                    
             this.setEsposo(null);
         }*/
-        
-        if (this.getEsposo()!= null)                   
-          {  
-            this.setEstadoCivil("Divorciada");            
+        if (this.getEsposo()!= null){  
+            this.setEstadoCivil("Divorciada");
             this.getEsposo().divorcio(); 
             this.setEsposo( null );
-            
-         } 
+            System.out.println("Te has divorciado tia");
+        } 
+
         
     }
     
