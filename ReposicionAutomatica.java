@@ -41,12 +41,13 @@ public class ReposicionAutomatica
         Calendar fechaActual = Calendar.getInstance();
         try
         {   //Archivo comprar_AAAMMDD.txt que guarda el proceso de solicitudes de compra                      
-            FileOutputStream compraFOS = new FileOutputStream ("compra.dat",true);
+            FileOutputStream compraFOS = new FileOutputStream ("compra"+fechaActual+".dat",true);
             DataOutputStream compraDOS = new DataOutputStream (compraFOS);     
-            
+                      
             FileOutputStream archiFIS = new FileOutputStream ("producto.dat", true);
             DataOutputStream archiDIS = new DataOutputStream (archiFIS); 
             
+            //Modo acceso directo
             RandomAccessFile archi = new RandomAccessFile("laboratorio.dat","r");
             //calculando cantidad de registros
             canreg = archi.length()/tamreg;
@@ -54,50 +55,52 @@ public class ReposicionAutomatica
             //BUCLE QUE LEE TODOS LOS REGISTROS DEL ARCHIVO laboratorio.dat
              for (int i = 0; i < canreg; i++)
                {
-                   codigoLab = archi.readInt();                        
+                   codigoLab = archi.readInt(); 
+                 
                    //Lee los String de NOMBRE de a un caracter y concatena:
                     for (int j = 0; j < 30; j++)
                       {
                           nombre = nombre + archi.readChar();
                     }//Fin del for del j (NOMBRE)
                             
-                            //Lee los String de DOMICILIO de a un caracter y concatena:
+                    //Lee los String de DOMICILIO de a un caracter y concatena:
                     for (int k = 0; k < 30; k++)
                             {
                                 domicilio = domicilio + archi.readChar();
                             }//Fin del for del k (DOMICILIO)
                             
-                            //Lee los String de TELEFONO de a un caracter y concatena:
+                   //Lee los String de TELEFONO de a un caracter y concatena:
                     for (int l = 0; l < 30; l++)
                             {
                                 telefono = telefono + archi.readChar();
                             }//Fin del for del l (TELEFONO)
                             
-                            compraMin = archi.readInt();
-                            diaEntrega = archi.readInt();
+                     compraMin = archi.readInt();
+                     diaEntrega = archi.readInt();
                             
-                            System.out.println(" ---------------------------------------------------------------------------- ");
-                            System.out.println(" DATOS DEL ARCHIVO PLABORATORIO.DAT: ");
-                            System.out.println("CodLab: "+codigoLab+" Nombre: "+nombre+" Domicilio: "+domicilio+" Telefono: "+
+                    /** System.out.println(" ---------------------------------------------------------------------------- ");
+                     System.out.println(" DATOS DEL ARCHIVO PLABORATORIO.DAT: ");
+                     System.out.println("CodLab: "+codigoLab+" Nombre: "+nombre+" Domicilio: "+domicilio+" Telefono: "+
                                                telefono + "Compra Minima: "+ compraMin+" Die de Entrega: " + diaEntrega);
-                            System.out.println(" ---------------------------------------------------------------------------- ");
+                     ystem.out.println(" ---------------------------------------------------------------------------- ");
+                     */
                             
-                            //INSTANCIACION DE UN OBJETO LABORATORIO:
-                            Laboratorio lab = new Laboratorio (nombre,domicilio,telefono,compraMin, diaEntrega);
-                            //LECTURA DEL ARCHIVO SECUENCIAL PRODUCTO.DAT
-                            Producto prod = new Producto (codProd,rubro,descripcion,precio,porcPntoRepo,existMin,lab);
-                            prod.mostrar();
+                     //INSTANCIACION DE UN OBJETO LABORATORIO:
+                     Laboratorio lab = new Laboratorio (nombre,domicilio,telefono,compraMin, diaEntrega);                                 
+                     
+                     Producto prod = new Producto (codProd,rubro,descripcion,precio,porcPntoRepo,existMin,lab);
+                     prod.mostrar();
                             
                             
-                            //GRABANDO EL ARCHIVO PRODUCTO.DAT                
-                            archiDIS.writeInt(prod.getCodigo());
-                            archiDIS.writeUTF(prod.getRubro());
-                            archiDIS.writeUTF(prod.getDescripcion());
-                            archiDIS.writeDouble(prod.getCosto());
-                            archiDIS.writeInt(prod.getStock());
-                            archiDIS.writeDouble(prod.getPorcPtoRepo());
-                            archiDIS.writeInt(prod.getExistMinima());
-                            archiDIS.writeInt(codigoLab);
+                     //GRABANDO EL ARCHIVO PRODUCTO.DAT                
+                     archiDIS.writeInt(prod.getCodigo());
+                     archiDIS.writeUTF(prod.getRubro());
+                     archiDIS.writeUTF(prod.getDescripcion());
+                     archiDIS.writeDouble(prod.getCosto());
+                     archiDIS.writeInt(prod.getStock());
+                     archiDIS.writeDouble(prod.getPorcPtoRepo());
+                     archiDIS.writeInt(prod.getExistMinima());
+                     archiDIS.writeInt(codigoLab);
                             
                              razon = prod.solicitar();
                          if (razon != 'N')
